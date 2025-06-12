@@ -1,0 +1,264 @@
+@font-face {
+    font-family: 'Star Jedi';
+    font-style: normal;
+    src: url(../assets/font/starjedi/Starjedi.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Anakin';
+    font-style: normal;
+    src: url(../assets/font/trade-gothic-bold-no-2.otf) format('opentype');
+}
+
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.background-video.active {
+    opacity: 1;
+}
+
+body {
+    font-family: 'Anakin', sans-serif;
+    color: white;
+    font-size: 20px;
+    text-shadow:
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+    background: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+body.tema-padrao:not(.video-loaded) {
+    background-image: url(../assets/images/tela-inicial-background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+body.tema-jedi:not(.video-loaded) {
+    background-image: url(../assets/images/background-dagobah.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+body.tema-sith:not(.video-loaded) {
+    background-image: url(../assets/images/destroyer-background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+body.video-loaded {
+    background-image: none !important;
+}
+
+.jogo, .tela-inicial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#titulo {
+    font-family: 'Star Jedi', sans-serif;
+    font-size: 80px;
+    letter-spacing: 6px;
+    text-shadow: none;
+    color: transparent;
+    background-image: url(../assets/images/star-wars-space-background.gif);
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    -webkit-text-stroke-width: 0.01rem;
+    -webkit-text-stroke-color: rgb(255, 255, 255);
+}
+
+.label {
+    color: aliceblue;
+}
+
+/*___________________________SELEÇÃO DE PERSONALIZAÇÃO________________________*/
+
+.escolha-tema {
+    margin-top: 20px;
+}
+
+.opcoes-tema {
+    display: flex;
+    gap: 50px;
+    margin-top: 10px;
+}
+
+.tema {
+    background-color: #000;
+    border: 3px solid #00c3ff;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: url(../assets/images/icon-saber.cur) 4 4, auto;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.tema:hover, .tema.selecionado {
+    cursor: url(../assets/images/icon-jedi.cur) 4 4, auto;
+    border-color: #00ff04;
+    box-shadow: 0 0 16px 4px #01a504, 0 0 32px 8px #00ff04;
+    transform: scale(1.05);
+}
+
+#tema-sith:hover, #tema-sith.selecionado {
+    cursor: url(../assets/images/icon-imperio.cur) 4 4, auto;
+    border-color: #ff0000;
+    box-shadow: 0 0 16px 4px #ff212e, 0 0 32px 8px #ff212e;
+    transform: scale(1.05);
+}
+
+.tema img {
+    width: 150px;
+    height: 90px;
+    border-radius: 5px;
+    display: block;
+}
+
+/*______________________________FORMULÁRIO DE JOGO____________________________*/
+.campo-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 30px;
+}
+
+.campo-form label,
+.campo-form input {
+    text-align: center;
+}
+
+.botoes {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+button {
+    background: linear-gradient(90deg, #00c3ff 0%, #007396 100%);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 32px;
+    font-size: 0.9rem;
+    font-family: 'Star Jedi', 'Anakin', sans-serif;
+    letter-spacing: 2px;
+    box-shadow: 0 0 7px 2px #00ffe7, 0 0 14px 4px #00c3ff;
+    transition: 
+        box-shadow 0.3s,
+        color 0.3s,
+        transform 0.2s;
+    outline: none;
+    position: relative;
+    z-index: 1;
+}
+
+button:hover {
+    cursor: url(../assets/images/icon-saber.cur) 4 4, auto;
+    background: linear-gradient(90deg, #fff 0%, #00ff04 100%);
+    color: #000;
+    box-shadow: 0 0 16px 4px #01a504, 0 0 32px 8px #00ff04;
+    transform: scale(1.05);
+}
+
+#btn-iniciar-jogo:hover {
+    background: linear-gradient(90deg, #fff 0%, #8f8f8f 100%);
+    color: #000;
+    box-shadow: 0 0 16px 4px #ffffff, 0 0 32px 8px #ffffff;
+    transform: scale(1.05);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed !important;
+    box-shadow: none;
+    background: #888;
+    color: #222;
+}
+
+#btn-reiniciar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#btn-reiniciar:hover {
+    background: linear-gradient(90deg, #fff 0%, #f00 100%);
+    color: #000;
+    box-shadow: 0 0 16px 4px #f00, 0 0 32px 8px #bd0101;
+    transform: scale(1.05);
+}
+
+#btn-audio {
+    background: #000;
+    color: white;
+    box-shadow: none;
+}
+
+#btn-audio:hover {
+    cursor: pointer;
+    background: #6e6e6e;
+    color: white;
+    box-shadow: 0 0 4px 2px rgb(255, 255, 255), 0 0 8px 4px #000000;
+}
+
+#yoda-container img, #darthVader-container img {
+    transition: opacity 0.5s ease-in-out;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+#yoda-container img {
+    filter: drop-shadow(0 0 15px rgba(0, 255, 0, 0.5));
+}
+
+#darthVader-container img {
+    filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.5));
+}
+
+#yoda-container, #darthVader-container {
+    position: relative;
+    z-index: 10;
+}
+
+#mensagem {
+    margin-top: 10px;
+    font-size: 15px;
+    text-align: center;
+    text-shadow:
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+}
