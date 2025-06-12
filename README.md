@@ -4,7 +4,7 @@ Técnico em Desenvolvimento de Sistemas
 <br>
 <h3>Programação Web I - Prof. Danilo Camargo</h3>
 <br>
-<h4>Numero Secreto - Star Wars</h4>
+<h4>Trabalho Avaliatório Semestral - Jogo do Numero Secreto</h4>
 <hr>
 <br>
 <text>
