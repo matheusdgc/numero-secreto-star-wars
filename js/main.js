@@ -33,7 +33,7 @@ const gameState = {
     audioInitialized: false
 };
 
-const tentativasMax = 1;
+const tentativasMax = 5;
 const numeroMin = 1;
 const numeroMax = 50;
 
